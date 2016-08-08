@@ -1,1 +1,1 @@
-web: /app/.local/bin/hpack-convert-api
+web: echo "Starting" && /app/.local/bin/hpack-convert-api
