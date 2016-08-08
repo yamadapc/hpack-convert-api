@@ -1,0 +1,33 @@
+name: hpack-convert-api
+version: '0.1.0.0'
+synopsis: Convert between cabal and hpack files
+category: Web
+author: Pedro Tacla Yamada
+maintainer: tacla.yamada@gmail.com
+license: MIT
+homepage: https://beijaflor.io/hpack
+
+extra-source-files:
+- ChangeLog.md
+
+dependencies:
+- base >=4.8 && <5
+- aeson
+- Spock
+- hpack-convert
+- transformers
+- unordered-containers
+- http-types
+- text
+
+library:
+  exposed-modules:
+  - Hpack.Convert.API
+  source-dirs: src
+
+executables:
+  hpack-convert-api:
+    main: Main.hs
+    source-dirs: bin
+    dependencies:
+    - hpack-convert-api

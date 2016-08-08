@@ -1,0 +1,7 @@
+resolver: lts-6.10
+packages:
+- '.'
+- './vendor/hpack-convert'
+extra-deps: []
+flags: {}
+extra-package-dbs: []

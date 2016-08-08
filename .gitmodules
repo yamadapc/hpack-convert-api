@@ -1,0 +1,3 @@
+[submodule "vendor/hpack-convert"]
+	path = vendor/hpack-convert
+	url = git@github.com:yamadapc/hpack-convert
