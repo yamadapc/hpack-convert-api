@@ -23,7 +23,7 @@ curlExample host = "curl " <> host <> " -F \"cabalfile=@./hpack-convert-api.caba
 runHpackConvertApi :: IO ()
 runHpackConvertApi = do
     port <- (fromMaybe 3000 . fmap read) <$> lookupEnv "PORT"
-    host <- (Text.pack . fromMaybe ("localhost" <> show port)) <$> lookupEnv "HOST"
+    host <- (Text.pack . fromMaybe ("localhost:" <> show port)) <$> lookupEnv "HOST"
     runSpock port $ spockT id $ do
         get "/" $ do
             text $ Text.unlines [ "Available methods:"
