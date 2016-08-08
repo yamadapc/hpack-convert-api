@@ -31,14 +31,14 @@ runHpackConvertApi = do
                                 , "  Converts cabal files sent through the `cabalfile` field"
                                 , "  to a package.yaml"
                                 , "  Example:"
-                                , "  " <> curlExample host'
+                                , "  " <> curlExample host
                                 ]
         post "/" $ do
             fs <- files
             case HashMap.lookup "cabalfile" fs of
                 Nothing -> resError $ Text.unlines [ "Missing `cabalfile` parameter"
                                                    , "Example:"
-                                                   , curlExample host'
+                                                   , curlExample host
                                                    ]
                 Just UploadedFile{..} -> do
                     !epkg <- liftIO (fromPackageDescriptionString <$> readFile uf_tempLocation)
