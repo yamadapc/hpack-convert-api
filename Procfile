@@ -1,2 +1,1 @@
-web:
-  stack exec hpack-convert-api
+web: hpack-convert-api
