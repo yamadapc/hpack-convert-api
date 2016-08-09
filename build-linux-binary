@@ -1,0 +1,9 @@
+#!/bin/bash -e
+stack build --docker
+pth=`stack path --dist-dir --docker`/build/hpack-convert-api/hpack-convert-api
+echo $pth
+mkdir -p dist
+cp $pth dist/
+exe=dist/`basename $pth`
+upx $exe
+echo "Copying binary to s3://hpack-convert-api"
