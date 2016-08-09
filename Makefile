@@ -1,5 +1,5 @@
 heroku:
-	heroku create --buildpack https://github.com/mfine/heroku-buildpack-stack.git 
+	heroku create --buildpack https://github.com/mfine/heroku-buildpack-stack.git hpack-convert
 	git push heroku master
 	make set-host
 
