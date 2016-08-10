@@ -19,6 +19,8 @@ dependencies:
 - unordered-containers
 - http-types
 - text
+- shakespeare >=2
+- blaze-html
 
 library:
   exposed-modules:
