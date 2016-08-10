@@ -22,7 +22,7 @@ import           Text.Hamlet
 import           Web.Spock
 
 curlExample :: Text -> Text
-curlExample host = "curl " <> host <> " -F \"cabalfile=@./hpack-convert-api.cabal\""
+curlExample host = "curl " <> host <> " -F \"cabalfile=@./`echo *.cabal`"
 
 getHome host = preferredFormat >>= \case
     PrefHTML -> lazyBytes $ renderHtml $ [shamlet|
