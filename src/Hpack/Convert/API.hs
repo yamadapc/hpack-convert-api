@@ -1,4 +1,5 @@
 {-# LANGUAGE BangPatterns      #-}
+{-# LANGUAGE LambdaCase        #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE QuasiQuotes       #-}
 {-# LANGUAGE RecordWildCards   #-}
@@ -23,8 +24,8 @@ import           Web.Spock
 curlExample :: Text -> Text
 curlExample host = "curl " <> host <> " -F \"cabalfile=@./hpack-convert-api.cabal\""
 
-getHome host = do
-    lazyBytes $ renderHtml $ [shamlet|
+getHome host = preferredFormat >>= \case
+    PrefHTML -> lazyBytes $ renderHtml $ [shamlet|
 <html>
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -55,15 +56,13 @@ getHome host = do
         });
       });
         |]
-
-    -- text $
-    --     Text.unlines [ "Available methods:"
-    --                  , "POST /"
-    --                  , "  Converts cabal files sent through the `cabalfile` field"
-    --                  , "  to a package.yaml"
-    --                  , "  Example:"
-    --                  , "  " <> curlExample host
-    --                  ]
+    _ -> text $ Text.unlines [ "Available methods:"
+                             , "POST /"
+                             , "  Converts cabal files sent through the `cabalfile` field"
+                             , "  to a package.yaml"
+                             , "  Example:"
+                             , "  " <> curlExample host
+                             ]
 
 runHpackConvertApi :: IO ()
 runHpackConvertApi = do
